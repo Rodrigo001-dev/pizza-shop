@@ -12,6 +12,11 @@ import { cancelOrder } from './routes/cancel-order'
 import { deliverOrder } from './routes/deliver-order'
 import { dispatchOrder } from './routes/dispatch-order'
 import { getOrders } from './routes/get-orders'
+import { getDayOrdersAmount } from './routes/get-day-orders-amount'
+import { getMonthOrdersAmount } from './routes/get-month-orders-amount'
+import { getMonthCanceledOrdersAmount } from './routes/get-month-canceled-orders-amount'
+import { getPopularProducts } from './routes/get-popular-products'
+import { getDailyReceiptInPeriod } from './routes/get-daily-receipt-in-period'
 
 const app = new Elysia()
   .use(registerRestaurante)
@@ -26,6 +31,11 @@ const app = new Elysia()
   .use(deliverOrder)
   .use(dispatchOrder)
   .use(getOrders)
+  .use(getDayOrdersAmount)
+  .use(getMonthOrdersAmount)
+  .use(getMonthCanceledOrdersAmount)
+  .use(getPopularProducts)
+  .use(getDailyReceiptInPeriod)
   .onError(({ code, error, set }) => {
     switch (code) {
       case 'VALIDATION': {
